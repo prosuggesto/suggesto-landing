@@ -10,7 +10,7 @@ import Background from './components/Background';
 function App() {
   return (
     <Router>
-      {/* <Background /> */}
+      <Background />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
