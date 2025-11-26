@@ -9,13 +9,16 @@ import Background from './components/Background';
 
 function App() {
   return (
-    <>
-      <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 9999, color: 'red', background: 'white', padding: '10px' }}>
-        DEBUG MODE ACTIVE
-      </div>
+    <Router>
       <Background />
-      <Home />
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/legal" element={<LegalNotice />} />
+        <Route path="/demo" element={<Demo />} />
+      </Routes>
+    </Router>
   );
 }
 
