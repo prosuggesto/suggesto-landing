@@ -27,7 +27,7 @@ const Navbar = () => {
                 </div>
 
                 <a href="/#contact" className="btn-primary shadow-glow hover:shadow-lg">
-                    Demander une démo
+                    Réserver un rdv
                 </a>
             </div>
         </nav>

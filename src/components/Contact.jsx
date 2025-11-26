@@ -89,8 +89,8 @@ const Contact = () => {
                                 <div className="flex items-center gap-4 mb-4">
                                     <Calendar className="w-8 h-8 text-brand-cyan" />
                                     <div>
-                                        <h3 className="font-bold text-lg text-foreground">Démo personnalisée</h3>
-                                        <p className="text-sm text-muted-foreground">30 minutes avec un expert</p>
+                                        <h3 className="font-bold text-lg text-foreground">Appel découverte</h3>
+                                        <p className="text-sm text-muted-foreground">Échangeons sur votre projet</p>
                                     </div>
                                 </div>
                                 <a

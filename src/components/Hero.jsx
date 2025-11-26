@@ -8,7 +8,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-hero z-0 pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10 text-center flex-grow flex flex-col justify-center">
-                <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight animate-fade-in-up">
+                <h1 className="text-4xl md:text-7xl font-bold mb-8 leading-tight tracking-tight animate-fade-in-up">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-cyan to-brand-blue">
                         L'IA Conversationnelle
                     </span>
