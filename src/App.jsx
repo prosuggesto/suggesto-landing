@@ -7,21 +7,20 @@ import LegalNotice from './pages/LegalNotice';
 import Demo from './pages/Demo';
 import Background from './components/Background';
 
+import Navbar from './components/Navbar';
+
 function App() {
   return (
     <Router>
-      {/* <Background /> */}
-      <div className="pt-32 text-center text-white text-4xl font-bold">
-        TEST DEPLOIEMENT - SI VOUS VOYEZ CA, REACT MARCHE
-      </div>
+      <Background />
       <Navbar />
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/legal" element={<LegalNotice />} />
         <Route path="/demo" element={<Demo />} />
-      </Routes> */}
+      </Routes>
     </Router>
   );
 }
