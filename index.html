@@ -12,10 +12,32 @@
       color: white;
       margin: 0;
     }
+
+    #error-display {
+      color: red;
+      padding: 20px;
+      background: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10000;
+      display: none;
+    }
   </style>
+  <script>
+    window.onerror = function (message, source, lineno, colno, error) {
+      var display = document.getElementById('error-display');
+      if (display) {
+        display.style.display = 'block';
+        display.innerHTML += '<h3>Global Error:</h3><pre>' + message + '\n' + source + ':' + lineno + '</pre>';
+      }
+    };
+  </script>
 </head>
 
 <body>
+  <div id="error-display"></div>
   <div id="root">
     <div style="color: white; font-family: sans-serif; text-align: center; padding-top: 50px;">
       Chargement de l'application...
