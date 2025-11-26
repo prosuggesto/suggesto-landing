@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>suggesto-landing</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- Voiceflow Chatbot -->
+    <script type="text/javascript">
+      (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '68ed1ebc12fe53eee0c0c9a4' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production'
+          }).then(function() {
+            // Attendre 5 secondes puis ouvrir le chat automatiquement
+            setTimeout(function() {
+              if (window.voiceflow && window.voiceflow.chat) {
+                window.voiceflow.chat.open();
+              }
+            }, 5000);
+          });
+        };
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+        v.type = "text/javascript";
+        s.parentNode.insertBefore(v, s);
+      })(document, 'script');
+    </script>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
