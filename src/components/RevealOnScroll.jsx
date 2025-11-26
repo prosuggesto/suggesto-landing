@@ -38,7 +38,7 @@ const RevealOnScroll = ({ children, className = "", delay = 0 }) => {
         <div
             ref={ref}
             className={`${className} ${isVisible ? 'animate-fade-in-up' : ''}`}
-            style={isVisible ? { animationDelay: `${delay}ms` } : { opacity: 0 }}
+            style={isVisible ? { animationDelay: `${delay}ms` } : { opacity: 1 }}
         >
             {children}
         </div>
