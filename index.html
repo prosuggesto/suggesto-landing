@@ -33,6 +33,23 @@
         display.innerHTML += '<h3>Global Error:</h3><pre>' + message + '\n' + source + ':' + lineno + '</pre>';
       }
     };
+    window.addEventListener('unhandledrejection', function (event) {
+      var display = document.getElementById('error-display');
+      if (display) {
+        display.style.display = 'block';
+        display.innerHTML += '<h3>Unhandled Rejection:</h3><pre>' + event.reason + '</pre>';
+      }
+    });
+    console.log("Inline script running");
+    window.onload = function () {
+      var root = document.getElementById('root');
+      if (root) {
+        var testDiv = document.createElement('div');
+        testDiv.style.color = 'green';
+        testDiv.innerHTML = 'JS Inline OK';
+        root.appendChild(testDiv);
+      }
+    }
   </script>
 </head>
 
@@ -46,26 +63,26 @@
 
   <!-- Voiceflow Chatbot -->
   <script type="text/javascript">
-    (function (d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function () {
-        window.voiceflow.chat.load({
-          verify: { projectID: '68ed1ebc12fe53eee0c0c9a4' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production'
-        }).then(function () {
-          // Attendre 5 secondes puis ouvrir le chat automatiquement
-          setTimeout(function () {
-            if (window.voiceflow && window.voiceflow.chat) {
-              window.voiceflow.chat.open();
-            }
-          }, 5000);
-        });
-      };
-      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-      v.type = "text/javascript";
-      s.parentNode.insertBefore(v, s);
-    })(document, 'script');
+      (function (d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function () {
+          window.voiceflow.chat.load({
+            verify: { projectID: '68ed1ebc12fe53eee0c0c9a4' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production'
+          }).then(function () {
+            // Attendre 5 secondes puis ouvrir le chat automatiquement
+            setTimeout(function () {
+              if (window.voiceflow && window.voiceflow.chat) {
+                window.voiceflow.chat.open();
+              }
+            }, 5000);
+          });
+        };
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+        v.type = "text/javascript";
+        s.parentNode.insertBefore(v, s);
+      })(document, 'script');
   </script>
 
   <script type="module" src="/src/main.jsx"></script>
