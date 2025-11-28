@@ -32,8 +32,8 @@ const Demo = () => {
                         Interagissez avec l'assistant conversationnel en bas à droite pour voir comment il gère des scénarios spécifiques.
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 animate-fade-in-up delay-300">
-                        <div className="p-6 rounded-2xl bg-card border border-border hover:border-brand-cyan/50 transition-all duration-300 group text-left">
+                    <div className="flex justify-center mb-16 animate-fade-in-up delay-300">
+                        <div className="w-full max-w-md p-6 rounded-2xl bg-card border border-border hover:border-brand-cyan/50 transition-all duration-300 group text-left">
                             <div className="w-12 h-12 rounded-xl bg-brand-cyan/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                 <Pill className="w-6 h-6 text-brand-cyan" />
                             </div>
@@ -43,19 +43,6 @@ const Demo = () => {
                             </p>
                             <div className="bg-background/50 p-3 rounded-lg border border-border text-xs font-mono text-muted-foreground">
                                 "Quels compléments pour le sommeil ?"
-                            </div>
-                        </div>
-
-                        <div className="p-6 rounded-2xl bg-card border border-border hover:border-brand-purple/50 transition-all duration-300 group text-left">
-                            <div className="w-12 h-12 rounded-xl bg-brand-purple/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                <Palette className="w-6 h-6 text-brand-purple" />
-                            </div>
-                            <h3 className="text-xl font-bold text-foreground mb-2">Cosmétique</h3>
-                            <p className="text-muted-foreground text-sm mb-4">
-                                Obtenez des recommandations de produits pour votre type de peau.
-                            </p>
-                            <div className="bg-background/50 p-3 rounded-lg border border-border text-xs font-mono text-muted-foreground">
-                                "J'ai la peau sèche, que conseilles-tu ?"
                             </div>
                         </div>
                     </div>
