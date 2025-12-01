@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { ArrowDownRight, Sparkles, Pill, Palette } from 'lucide-react';
+import { ArrowDownRight, Sparkles, Palette } from 'lucide-react';
 
 const Demo = () => {
     return (
@@ -35,14 +35,14 @@ const Demo = () => {
                     <div className="flex justify-center mb-16 animate-fade-in-up delay-300">
                         <div className="w-full max-w-md p-6 rounded-2xl bg-card border border-border hover:border-brand-cyan/50 transition-all duration-300 group text-left">
                             <div className="w-12 h-12 rounded-xl bg-brand-cyan/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                <Pill className="w-6 h-6 text-brand-cyan" />
+                                <Palette className="w-6 h-6 text-brand-cyan" />
                             </div>
-                            <h3 className="text-xl font-bold text-foreground mb-2">Compléments Alimentaires</h3>
+                            <h3 className="text-xl font-bold text-foreground mb-2">Cosmétiques</h3>
                             <p className="text-muted-foreground text-sm mb-4">
-                                Demandez des conseils sur les vitamines, les dosages ou les interactions.
+                                Demandez des conseils sur les produits de beauté, les routines de soins ou les ingrédients.
                             </p>
                             <div className="bg-background/50 p-3 rounded-lg border border-border text-xs font-mono text-muted-foreground">
-                                "Quels compléments pour le sommeil ?"
+                                "Quelle routine pour une peau sensible ?"
                             </div>
                         </div>
                     </div>
