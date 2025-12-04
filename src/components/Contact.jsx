@@ -5,30 +5,63 @@ import RevealOnScroll from './RevealOnScroll';
 const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setError(null);
 
+        // FormData sera créé plus bas avec la clé d'accès
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
 
+        // Honeypot check
+        if (data._honey) {
+            setIsSubmitting(false);
+            return;
+        }
+
         try {
-            const response = await fetch("https://formsubmit.co/ajax/pro.suggesto.ai@gmail.com", {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
+            // Utilisation de Web3Forms (plus fiable et rapide)
+            const formData = new FormData(e.target);
+
+            // Clé d'accès Web3Forms
+            formData.append("access_key", "2e5ecd43-add1-4807-bead-beb32b428c6d");
+
+            const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify(data)
+                body: formData,
+                signal: controller.signal
             });
 
+            clearTimeout(timeoutId);
+
+            const result = await response.json();
+
             if (response.ok) {
-                setIsSuccess(true);
+                // On stocke le message du serveur pour le montrer à l'utilisateur (debug)
+                setIsSuccess(result.message || "Succès confirmé par le serveur");
                 e.target.reset();
+            } else {
+                // Tenter de récupérer le message d'erreur spécifique du service
+                const errorMessage = result.message || result.error || 'Erreur serveur';
+                throw new Error(errorMessage);
             }
         } catch (error) {
             console.error("Error submitting form:", error);
+            // Afficher le message d'erreur spécifique si disponible
+            if (error.name === 'AbortError' || error.message.includes('aborted')) {
+                setError("Le serveur met trop de temps à répondre. Veuillez réessayer plus tard.");
+            } else {
+                setError(`Erreur: ${error.message || "Une erreur est survenue."}`);
+            }
         } finally {
             setIsSubmitting(false);
         }
@@ -113,12 +146,12 @@ const Contact = () => {
                                         <CheckCircle2 className="w-10 h-10 text-green-500 animate-in zoom-in duration-500" />
                                     </div>
                                     <h3 className="text-2xl font-bold mb-2">Message envoyé !</h3>
-                                    <p className="text-muted-foreground text-center max-w-xs">
+                                    <p className="text-muted-foreground text-center max-w-xs mb-4">
                                         Merci de nous avoir contactés. Nous reviendrons vers vous très rapidement.
                                     </p>
                                     <button
                                         onClick={() => setIsSuccess(false)}
-                                        className="mt-8 text-brand-cyan hover:underline"
+                                        className="mt-4 text-brand-cyan hover:underline"
                                     >
                                         Envoyer un autre message
                                     </button>
@@ -151,6 +184,12 @@ const Contact = () => {
                                     <label className="block text-sm font-medium text-muted-foreground mb-2">Message</label>
                                     <textarea name="message" required className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan outline-none transition-colors h-32 resize-none" placeholder="Comment pouvons-nous vous aider ?"></textarea>
                                 </div>
+
+                                {error && (
+                                    <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-500 text-sm">
+                                        {error}
+                                    </div>
+                                )}
 
                                 <button
                                     type="submit"
